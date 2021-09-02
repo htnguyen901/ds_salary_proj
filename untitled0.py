@@ -58,8 +58,17 @@ df.R_yn.value_counts()
 #spark
 df['spark'] = df['Job Description'].apply(lambda x: 1 if 'spark' in x.lower()else 0)
 df.spark.value_counts()
+
 #aws
+df['aws'] = df['Job Description'].apply(lambda x: 1 if 'aws' in x.lower()else 0)
+df.aws.value_counts()
+
 #excel
+df['excel'] = df['Job Description'].apply(lambda x: 1 if 'excel' in x.lower()else 0)
+df.excel.value_counts()
 
+df_out = df.drop(['Unnamed: 0'], axis = 1)
 
+df_out.to_csv('salary_data_clean.csv', index = False)
 
+pd.read_csv('salary_data_clean.csv')
